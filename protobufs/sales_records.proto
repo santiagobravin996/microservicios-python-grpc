@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+message EmptyMessage{}
+
+message PingSalesRecordsResponse{
+    string ack = 1;
+}
+
+
+
+message SalesRecordsRequest{
+    string region = 1;
+    string item_type = 2;
+    string units_sold = 3;
+    string unit_price = 4; 
+    string unit_cost = 5;
+    string source = 6;
+}
+
+message SalesRecordsRespose{
+    string data = 1;
+}
+
+service SalesRecord {
+    rpc PingSalesRecord(EmptyMessage) returns (PingSalesRecordsResponse);
+        //para validar que funciona
+    rpc SendSalesRecord(SalesRecordsRequest) returns (SalesRecordsRespose);
+}
+
+
+
+
+
